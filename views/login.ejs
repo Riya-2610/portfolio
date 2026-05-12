@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="center-page">
+    <main class="login-card glass-panel">
+      <p class="eyebrow">Hidden Admin</p>
+      <h1>Welcome back</h1>
+      <form action="/admin-login" method="POST" class="stack-form">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" required autofocus />
+        <% if (error) { %>
+          <p class="form-error"><%= error %></p>
+        <% } %>
+        <button type="submit">Unlock Dashboard</button>
+      </form>
+    </main>
+  </body>
+</html>

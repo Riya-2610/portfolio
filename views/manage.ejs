@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Portfolio — Admin</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      /* Pink & Glass Additions */
+      .preview-grid, .existing-images-grid { 
+        display: flex; 
+        gap: 12px; 
+        flex-wrap: wrap; 
+        margin: 15px 0; 
+      }
+      .image-wrapper { 
+        position: relative; 
+        width: 80px; 
+        height: 80px; 
+        transition: transform 0.2s;
+      }
+      .image-wrapper:hover { transform: scale(1.05); }
+      .mini-preview { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: 12px; 
+        border: 2px solid #fff;
+        box-shadow: 0 4px 10px rgba(219, 39, 119, 0.1);
+      }
+      .delete-img-btn { 
+        position: absolute; 
+        top: -8px; 
+        right: -8px; 
+        background: #ff4d4d; 
+        color: white; 
+        border: 2px solid white; 
+        border-radius: 50%; 
+        width: 24px; 
+        height: 24px; 
+        cursor: pointer; 
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 10;
+      }
+      .delete-img-btn:hover { background: #cc0000; }
+      .preview-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px dashed #f472b6;
+      }
+      .dashboard-shell { padding-bottom: 100px; }
+    </style>
+  </head>
+  <body>
+    <main class="site-shell dashboard-shell">
+      <header class="dashboard-header glass-panel">
+        <div>
+          <p class="eyebrow text-pink-500">Admin Dashboard</p>
+          <h1>Manage Your Portfolio</h1>
+        </div>
+        <div class="header-actions">
+          <a href="/" class="view-site-btn">View Live Site</a>
+          <form action="/logout" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+          </form>
+        </div>
+      </header>
+
+      <% if (error) { %>
+        <p class="form-error dashboard-alert"><%= error %></p>
+      <% } %>
+
+      <section class="dashboard-grid">
+        <!-- About Me Section -->
+        <article class="glass-panel admin-panel" id="about-panel">
+          <h2>About Me</h2>
+          <form action="/manage/about" method="POST" class="stack-form">
+            <label for="about">Your Professional Bio</label>
+            <textarea id="about" name="about" rows="7"><%= data.about %></textarea>
+            <button type="submit">Update Bio</button>
+          </form>
+        </article>
+
+        <!-- Skills Section -->
+        <article class="glass-panel admin-panel" id="skills-panel">
+          <h2>Toolbox & Skills</h2>
+          <form action="/manage/skills" method="POST" class="inline-form">
+            <input name="skill" type="text" placeholder="e.g. Node.js" required />
+            <button type="submit">Add Skill</button>
+          </form>
+          <div class="manage-list">
+            <% data.skills.forEach((skill, index) => { %>
+              <div class="manage-row">
+                <span><%= skill %></span>
+                <form action="/manage/skills/<%= index %>/delete" method="POST">
+                  <button class="danger" type="submit">×</button>
+                </form>
+              </div>
+            <% }) %>
+          </div>
+        </article>
+
+        <!-- Experience Section -->
+        <article class="glass-panel admin-panel wide-panel" id="experience-panel">
+          <h2>Work Experience</h2>
+          <form action="/manage/experience" method="POST" class="admin-form-grid">
+            <input name="role" type="text" placeholder="Role (e.g. Full-Stack Developer)" required />
+            <input name="company" type="text" placeholder="Company Name" />
+            <input name="duration" type="text" placeholder="Duration (e.g. Feb 2026 - Present)" />
+            <textarea name="description" rows="4" placeholder="Briefly describe your responsibilities..."></textarea>
+            <button type="submit">Add Experience</button>
+          </form>
+          <div class="manage-list">
+            <% data.experience.forEach((item, index) => { %>
+              <div class="manage-row large-row">
+                <div>
+                  <strong><%= item.role %></strong>
+                  <p class="company-tag"><%= item.company %> | <%= item.duration %></p>
+                  <p class="description-text"><%= item.description %></p>
+                </div>
+                <form action="/manage/experience/<%= index %>/delete" method="POST">
+                  <button class="danger" type="submit">Delete</button>
+                </form>
+              </div>
+            <% }) %>
+          </div>
+        </article>
+
+        <!-- Projects Section -->
+        <article class="glass-panel admin-panel wide-panel" id="projects-panel">
+          <h2>Selected Projects</h2>
+          <form action="/manage/projects" method="POST" enctype="multipart/form-data" class="admin-form-grid">
+            <input name="title" type="text" placeholder="Project Title" required />
+            <textarea name="description" rows="4" placeholder="Detailed project description..." required></textarea>
+            
+            <label class="file-input-label">
+              <span class="upload-trigger">Click to select images (Max 10)</span>
+              <input name="images" type="file" accept="image/*" multiple id="image-input" hidden />
+            </label>
+            
+            <!-- Live Preview of files to be uploaded -->
+            <div id="preview-container" class="preview-grid"></div>
+            
+            <button type="submit" class="publish-btn">Publish Project</button>
+          </form>
+
+          <div class="manage-list project-manage-list">
+            <% data.projects.forEach((project) => { %>
+              <div class="manage-row large-row">
+                <div class="project-details">
+                  <strong><%= project.title %></strong>
+                  <p class="project-desc"><%= project.description %></p>
+                  
+                  <!-- Existing Images Management -->
+                  <div class="existing-images-grid">
+                    <% (project.images || []).forEach((img) => { %>
+                      <div class="image-wrapper">
+                        <img src="/uploads/<%= img %>" class="mini-preview">
+                        <!-- Route to delete specific image -->
+                        <form action="/manage/projects/<%= project.id %>/images/<%= img %>/delete" method="POST">
+                            <button type="submit" class="delete-img-btn" title="Delete image">&times;</button>
+                        </form>
+                      </div>
+                    <% }) %>
+                  </div>
+                </div>
+                
+                <form action="/manage/projects/<%= project.id %>/delete" method="POST" onsubmit="return confirm('Delete entire project?');">
+                  <button class="danger" type="submit">Delete Entire Project</button>
+                </form>
+              </div>
+            <% }) %>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      // Logic to preview images before they are uploaded
+      const imageInput = document.getElementById('image-input');
+      const previewContainer = document.getElementById('preview-container');
+
+      imageInput.addEventListener('change', function() {
+          previewContainer.innerHTML = ''; // Clear current previews
+          const files = Array.from(this.files);
+          
+          files.forEach(file => {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const div = document.createElement('div');
+                  div.className = 'preview-item';
+                  div.innerHTML = `<img src="${e.target.result}" title="${file.name}">`;
+                  previewContainer.appendChild(div);
+              }
+              reader.readAsDataURL(file);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Artemis Studio | Creative Full-Stack Portfolio</title>
+  
+  <!-- Google Fonts: Sophisticated Modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-cream: #fdf8f0;
+      --bg-warm: #fffbf5;
+      --accent-gold: #d4a373;
+      --accent-terracotta: #bc6c25;
+      --accent-sage: #a3b18a;
+      --text-dark: #2d2a24;
+      --text-soft: #6b6256;
+      --card-white: rgba(255, 253, 250, 0.92);
+      --border-subtle: rgba(212, 163, 115, 0.2);
+      --shadow-elegant: 0 20px 40px -12px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(212, 163, 115, 0.08);
+      --shadow-hover: 0 30px 45px -18px rgba(100, 70, 40, 0.12), 0 0 0 1px rgba(212, 163, 115, 0.2);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(125deg, #fdf7ed 0%, #faf3e6 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    /* Animated organic shapes */
+    .shape-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .shape-bg::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, rgba(212,163,115,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    .shape-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      right: -5%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(163,177,138,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(70px);
+    }
+
+    .site-shell {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem 5rem;
+      position: relative;
+    }
+
+    /* Premium Glass Panel */
+    .glass-panel {
+      background: var(--card-white);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.05);
+    }
+
+    /* Hero Section - Luxe */
+    .hero {
+      padding: 4rem 4rem;
+      margin-bottom: 2.8rem;
+      position: relative;
+      background: linear-gradient(115deg, #fffffffa, #fef8efe6);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '✦';
+      position: absolute;
+      bottom: -30px;
+      right: 30px;
+      font-size: 180px;
+      opacity: 0.04;
+      font-family: monospace;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--accent-terracotta);
+      background: rgba(188, 108, 37, 0.08);
+      padding: 0.3rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 1.4rem;
+      border: 0.5px solid rgba(188, 108, 37, 0.2);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      background: linear-gradient(130deg, #2d2a24 30%, #bc6c25 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-soft);
+      max-width: 65%;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 1.3rem;
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .admin-link {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 1.3rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      text-decoration: none;
+      transition: all 0.25s;
+      border: 1px solid var(--border-subtle);
+      font-family: monospace;
+    }
+    .admin-link i { margin-right: 6px; }
+    .admin-link:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      border-color: var(--accent-terracotta);
+      transform: translateY(-2px);
+    }
+
+    /* Two column grid */
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .section-card {
+      padding: 2.4rem 2.2rem;
+    }
+    .section-card:hover {
+      transform: translateY(-6px);
+      background: #fffffffb;
+      border-color: var(--accent-gold);
+      box-shadow: var(--shadow-hover);
+    }
+    .section-card h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #2d2a24, #8b6b42);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Skill Tags — premium capsules */
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+    .skill-list span {
+      background: linear-gradient(125deg, #fdf7ef, #faf1e4);
+      padding: 0.55rem 1.3rem;
+      border-radius: 80px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #5c4b32;
+      transition: all 0.25s;
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      letter-spacing: -0.2px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .skill-list span:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: translateY(-3px);
+      border-color: var(--accent-terracotta);
+      box-shadow: 0 6px 12px rgba(188,108,37,0.2);
+    }
+
+    /* Experience — modern timeline */
+    .content-section {
+      background: rgba(255, 252, 246, 0.88);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem;
+      margin-bottom: 2.8rem;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      transition: all 0.25s;
+      border-radius: 0 20px 20px 0;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(212,163,115,0.2);
+    }
+    .timeline-item:hover {
+      background: linear-gradient(90deg, rgba(212,163,115,0.04), transparent);
+      transform: translateX(6px);
+    }
+    .timeline-item h3 {
+      font-size: 1.28rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-item p span {
+      font-size: 0.7rem;
+      background: #f0e7dd;
+      padding: 0.2rem 0.9rem;
+      border-radius: 60px;
+      margin-left: 0.8rem;
+      font-weight: 600;
+      color: #8b694a;
+    }
+
+    /* Project Cards — high elegance */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 1.8rem;
+    }
+    .project-card {
+      background: rgba(255, 254, 250, 0.92);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: var(--shadow-elegant);
+      border: 1px solid rgba(212, 163, 115, 0.15);
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      background: #ffffff;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--accent-gold);
+    }
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.04);
+    }
+    .project-placeholder {
+      height: 220px;
+      background: linear-gradient(145deg, #f3ece2, #faf0e2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b68b60;
+      font-weight: 500;
+      font-size: 0.9rem;
+      gap: 8px;
+    }
+    .project-card div:last-child {
+      padding: 1.4rem 1.6rem 1.8rem;
+    }
+    .project-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+    .project-card p {
+      color: #766b5a;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .view-hint {
+      margin-top: 0.9rem;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s;
+    }
+    .project-card:hover .view-hint { gap: 10px; }
+
+    /* Modal Gallery — refined */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.25s, opacity 0.3s ease;
+      z-index: 2000;
+    }
+    .modal.open {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-backdrop {
+      position: absolute;
+      background: rgba(30, 24, 18, 0.6);
+      backdrop-filter: blur(12px);
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .modal-panel {
+      position: relative;
+      max-width: 88vw;
+      width: 1080px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #fffef9;
+      border-radius: 2rem;
+      padding: 2rem;
+      z-index: 10;
+      animation: modalFloat 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(212,163,115,0.3);
+      box-shadow: 0 40px 60px -24px rgba(0,0,0,0.3);
+    }
+    @keyframes modalFloat {
+      from { transform: scale(0.96) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .close-button {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.4rem;
+      background: #f2ebe0;
+      border: 1px solid #e1d1c0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #8b694a;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .close-button:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: rotate(90deg);
+      border-color: var(--accent-terracotta);
+    }
+    .gallery {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .gallery-frame {
+      flex: 2;
+      min-width: 260px;
+      background: #fbf5ec;
+      border-radius: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .gallery-frame img {
+      max-width: 100%;
+      max-height: 55vh;
+      border-radius: 1.2rem;
+      display: none;
+      object-fit: contain;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+    .gallery-frame img.active {
+      display: block;
+      animation: fadeScale 0.3s ease;
+    }
+    @keyframes fadeScale {
+      from { opacity: 0.5; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .gallery-info {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .gallery-info h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .gallery-controls {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .gallery-controls button {
+      background: #efe4d7;
+      border: none;
+      padding: 0.55rem 1.3rem;
+      border-radius: 60px;
+      color: #5e4530;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.85rem;
+    }
+    .gallery-controls button:hover {
+      background: var(--accent-terracotta);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .project-placeholder.large {
+      padding: 3.5rem;
+      text-align: center;
+      background: #faf1e5;
+      border-radius: 1.5rem;
+      font-weight: 500;
+    }
+
+    /* micro-interactions */
+    @media (max-width: 780px) {
+      .site-shell { padding: 1.2rem; }
+      .hero { padding: 2rem 1.8rem; }
+      .hero-description { max-width: 100%; }
+      .modal-panel { max-width: 95vw; padding: 1.2rem; }
+      .gallery { flex-direction: column; }
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f2e9df; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #cfb694; border-radius: 10px; }
+    
+    .fa, .fas, .far { margin-right: 6px; }
+  </style>
+</head>
+<body>
+<div class="shape-bg"></div>
+
+<main class="site-shell">
+  <!-- Hero — sophisticated greeting -->
+  <section class="hero glass-panel">
+    <div>
+      <p class="eyebrow"><i class="fas fa-sparkles"></i> ✦ PORTFOLIO ✦</p>
+      <h1>Creative Full-Stack<br>Developer</h1>
+      <p class="hero-description"><%= data.about %></p>
+    </div>
+    <a class="admin-link" href="/admin-login" aria-label="Admin login"><i class="fas fa-palette"></i> Admin Studio</a>
+  </section>
+
+  <!-- About + Skills dual card -->
+  <div class="section-grid">
+    <article class="glass-panel section-card">
+      <p class="eyebrow"><i class="fas fa-feather"></i> Philosophy</p>
+      <h2>Thoughtful builds,<br>polished details.</h2>
+      <p style="color: var(--text-soft);"><%= data.about %></p>
+    </article>
+    <article class="glass-panel section-card">
+      <p class="eyebrow"><i class="fas fa-gem"></i> Craft</p>
+      <h2>Toolbox</h2>
+      <div class="skill-list">
+        <% data.skills.forEach(function(skill) { %>
+          <span><i class="fas fa-caret-right"></i> <%= skill %></span>
+        <% }); %>
+      </div>
+    </article>
+  </div>
+
+  <!-- Experience — visual timeline -->
+  <section class="glass-panel content-section">
+    <p class="eyebrow"><i class="fas fa-briefcase"></i> Milestones</p>
+    <h2>Where I Have Worked</h2>
+    <div class="timeline">
+      <% data.experience.forEach(function(item) { %>
+        <article class="timeline-item">
+          <div>
+            <h3><%= item.role %></h3>
+            <p><i class="fas fa-building"></i> <%= item.company %> <span><i class="far fa-calendar-alt"></i> <%= item.duration %></span></p>
+          </div>
+          <p style="color: #7d6b56;"><%= item.description %></p>
+        </article>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Projects: showreel -->
+  <section class="content-section" style="background: rgba(255, 250, 241, 0.88);">
+    <div class="section-heading">
+      <p class="eyebrow"><i class="fas fa-crown"></i> Creations</p>
+      <h2>Selected Work</h2>
+    </div>
+    <div class="project-grid">
+      <% data.projects.forEach(function(project) { %>
+        <button class="project-card" type="button" data-project="<%= project.id %>" style="cursor: pointer;">
+          <% if (project.images && project.images.length) { %>
+            <img src="/uploads/<%= project.images[0] %>" alt="<%= project.title %>" loading="lazy" />
+          <% } else { %>
+            <div class="project-placeholder"><i class="fas fa-muse"></i> Visual preview</div>
+          <% } %>
+          <div>
+            <h3><%= project.title %></h3>
+            <p><%= project.description %></p>
+            <div class="view-hint"><i class="fas fa-arrow-right"></i> discover gallery</div>
+          </div>
+        </button>
+      <% }); %>
+    </div>
+  </section>
+</main>
+
+<!-- Modals — immersive gallery -->
+<% data.projects.forEach(function(project) { %>
+  <div class="modal" id="project-<%= project.id %>" aria-hidden="true">
+    <div class="modal-backdrop" data-close="<%= project.id %>"></div>
+    <section class="modal-panel" role="dialog" aria-modal="true" aria-label="<%= project.title %> gallery">
+      <button class="close-button" type="button" data-close="<%= project.id %>"><i class="fas fa-times"></i></button>
+      <div class="gallery" data-gallery>
+        <div class="gallery-frame">
+          <% if (project.images && project.images.length) { %>
+            <% project.images.forEach(function(image, index) { %>
+              <img class="<%= index === 0 ? 'active' : '' %>" src="/uploads/<%= image %>" alt="<%= project.title %> visual" />
+            <% }); %>
+          <% } else { %>
+            <div class="project-placeholder large"><i class="fas fa-cloud-upload-alt"></i> No media yet — add via admin</div>
+          <% } %>
+        </div>
+        <div class="gallery-info">
+          <span class="eyebrow" style="margin-bottom: 0;">full case</span>
+          <h2><%= project.title %></h2>
+          <p style="line-height: 1.6;"><%= project.description %></p>
+          <% if (project.images && project.images.length > 1) { %>
+            <div class="gallery-controls">
+              <button type="button" data-prev><i class="fas fa-chevron-left"></i> Prev</button>
+              <span data-count style="background: #efe4d9; padding: 0.2rem 1rem; border-radius: 60px; font-size:0.85rem;">1 / <%= project.images.length %></span>
+              <button type="button" data-next>Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
+  </div>
+<% }); %>
+
+<script>
+  (function() {
+    // Open modal with smooth
+    document.querySelectorAll('[data-project]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modal = document.getElementById('project-' + btn.dataset.project);
+        if (modal) {
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close modals
+    document.querySelectorAll('[data-close]').forEach(function(closeEl) {
+      closeEl.addEventListener('click', function() {
+        const modal = closeEl.closest('.modal');
+        if (modal) {
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    // Escape key closes
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const openModal = document.querySelector('.modal.open');
+        if (openModal) {
+          openModal.classList.remove('open');
+          openModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Advanced Gallery Navigation
+    document.querySelectorAll('[data-gallery]').forEach(function(gallery) {
+      const images = gallery.querySelectorAll('.gallery-frame img');
+      const countSpan = gallery.querySelector('[data-count]');
+      if (!images.length) return;
+      let activeIdx = 0;
+      images.forEach((img, idx) => { if (img.classList.contains('active')) activeIdx = idx; });
+      
+      function updateGallery(index) {
+        images[activeIdx].classList.remove('active');
+        activeIdx = (index + images.length) % images.length;
+        images[activeIdx].classList.add('active');
+        if (countSpan) countSpan.innerText = (activeIdx + 1) + ' / ' + images.length;
+      }
+      
+      const prev = gallery.querySelector('[data-prev]');
+      const next = gallery.querySelector('[data-next]');
+      if (prev) prev.addEventListener('click', (e) => { e.stopPropagation(); updateGallery(activeIdx - 1); });
+      if (next) next.addEventListener('click', (e) => { e.stopPropagation(); updateGallery(activeIdx + 1); });
+      if (countSpan && images.length) countSpan.innerText = (activeIdx + 1) + ' / ' + images.length;
+    });
+  })();
+</script>
+</body>
+</html>

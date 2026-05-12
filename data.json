@@ -1,0 +1,129 @@
+{
+  "about": "I am a Full-Stack Developer at Zero & 1, where I specialize in transforming complex business requirements into high-performance digital ecosystems. My expertise lies in building robust Accounting and ERP systems, including specialized Broker Software and Member Management platforms designed for seamless scalability.\r\n\r\nI bridge the gap between technical complexity and aesthetic simplicity. From architecting Dynamic, data-driven sites with intricate backend logic to crafting lightning-fast, high-conversion Static sites, I ensure every project is 'shiny,' professional, and user-centric. Whether I’m automating financial workflows or refining a UI with glassmorphism, my goal is always the same: delivering polished, reliable software that drives business growth",
+  "skills": [
+    "Node.js",
+    "Express.js",
+    "Java",
+    "Oops",
+    "Spring Boot",
+    "Mysql",
+    "Mongodb",
+    "RESTful API Development",
+    "Ejs",
+    "JavaScript",
+    "Tailwind CSS",
+    "Git & GitHub",
+    "Postman",
+    "Data Structure & Algorithm(200+ Leetcode)",
+    "Bootstrap"
+  ],
+  "experience": [
+    {
+      "role": "Full Stack Developer",
+      "company": "Zeron1 IT Solutions Private Limited",
+      "duration": "Feb 2026 – Present",
+      "description": "Developing and maintaining Accounting ERPs, Brokerage software, and Member Management systems. Integrating E-Way bill APIs and automating business workflows."
+    }
+  ],
+  "projects": [
+    {
+      "id": "1778481957883",
+      "title": "Les Conseillers — https://lesconseillles.com/",
+      "description": "Designed and developed a sophisticated digital platform for Les Conseillers, focusing on establishing a high-authority online presence for professional consulting services. The project prioritizes clarity, professional trust, and a seamless user journey for clients seeking expert advice.\r\n\r\nKey Features:\r\n\r\nAuthority-Driven Design: Created a minimalist and clean UI that emphasizes professional credibility and ease of navigation.\r\n\r\nDynamic Content Management: Integrated a flexible backend architecture that allows for easy updates of service offerings, advisory modules, and client resources.\r\n\r\nPerformance Optimization: Engineered for high-speed performance and SEO best practices to ensure the platform ranks effectively for consultancy-related searches.\r\n\r\nInteractive Lead Funnels: Developed custom contact and consultation forms designed to capture high-quality leads and streamline the advisor-client connection.",
+      "images": [
+        "1778481957843-screenshot-2026-05-11-121417.png",
+        "1778481957857-screenshot-2026-05-11-121429.png",
+        "1778481957867-screenshot-2026-05-11-121434.png",
+        "1778481957869-screenshot-2026-05-11-121458.png",
+        "1778481957870-screenshot-2026-05-11-121511.png",
+        "1778481957872-screenshot-2026-05-11-121522.png",
+        "1778481957873-screenshot-2026-05-11-121524.png",
+        "1778481957874-screenshot-2026-05-11-121534.png"
+      ]
+    },
+    {
+      "id": "1778481732508",
+      "title": "Wallstudio — https://wallstudio.co.in/",
+      "description": "Developed a high-end digital portfolio for Wallstudio, a premier interior design firm. This project was designed to reflect the luxury and creativity of the brand, featuring a 'shiny' aesthetic and a focus on high-resolution visual storytelling.\r\n\r\nKey Features:\r\n\r\nDynamic Project Galleries: Engineered a sophisticated gallery system that allows the firm to showcase their renovation and cafe-restaurant design projects with a seamless user experience.\r\n\r\nGoogle Drive API Integration: Implemented a backend solution to fetch and display high-definition project imagery directly from Google Drive, ensuring effortless content management.\r\n\r\nGlassmorphic UI: Applied modern 'Shiny' and 'Aesthetic' design principles, utilizing glassmorphism effects to complement the firm’s artistic interior style.\r\n\r\nConversion-Optimized Inquiries: Built a custom inquiry system for renovation consultations, connecting potential clients directly to the design team",
+      "images": [
+        "1778481732404-screenshot-2026-05-11-121037.png",
+        "1778481732410-screenshot-2026-05-11-121031.png",
+        "1778481732415-screenshot-2026-05-11-120719.png",
+        "1778481732416-screenshot-2026-05-11-120706.png",
+        "1778481732417-screenshot-2026-05-11-120656.png",
+        "1778481732419-screenshot-2026-05-11-120622.png",
+        "1778481732443-screenshot-2026-05-11-120556.png",
+        "1778481732452-screenshot-2026-05-11-120540.png",
+        "1778481732453-screenshot-2026-05-11-120532.png",
+        "1778481732470-screenshot-2026-05-11-120522.png",
+        "1778481732477-screenshot-2026-05-11-120513.png",
+        "1778481732479-screenshot-2026-05-11-120502.png",
+        "1778481732480-screenshot-2026-05-11-120453.png"
+      ]
+    },
+    {
+      "id": "1778481224800",
+      "title": "Zero & 1 — Official Corporate Identity & Service Portal",
+      "description": "Developed the official web presence for Zero & 1, a leading software development firm. The project focuses on a high-end professional aesthetic, serving as the primary gateway for clients to explore the company’s expertise in ERP, Accounting, and Custom Software solutions.\r\n\r\nKey Features:\r\n\r\nStrategic Branding: Designed a clean, high-conversion layout that reflects the firm's precision and commitment to technical excellence.\r\n\r\nService Architecture: A structured showcase of specialized services, from Brokerage software to enterprise-level integrations, optimized for SEO and performance.\r\n\r\nLead Management: Integrated secure, automated contact systems to streamline client inquiries and professional consultations.\r\n\r\nResponsive Performance: A fully optimized, mobile-first experience ensuring a seamless presentation across all devices and browsers.",
+      "images": [
+        "1778481224774-screenshot-2026-05-11-111257.png",
+        "1778481224779-screenshot-2026-05-11-111246.png",
+        "1778481224785-screenshot-2026-05-11-111222.png",
+        "1778481224787-screenshot-2026-05-11-111217.png",
+        "1778481224788-screenshot-2026-05-11-111212.png",
+        "1778481224789-screenshot-2026-05-11-111206.png",
+        "1778481224795-screenshot-2026-05-11-111200.png",
+        "1778481224797-screenshot-2026-05-11-111153.png"
+      ]
+    },
+    {
+      "id": "1778481167767",
+      "title": "Pro-Member Management & Subscription Ecosystem",
+      "description": "Designed and deployed a scalable Member Management System to streamline user enrollment, subscription tracking, and community engagement. This platform acts as a centralized hub for organizations to manage their database with precision and ease.\r\n\r\nKey Features:\r\n\r\nAutomated Membership Lifecycle: Fully automated system for member onboarding, renewal alerts, and status tracking (Active/Expired/Pending).\r\n\r\nAccess Control: Implemented secure, role-based access to ensure sensitive member data is only accessible by authorized administrators.\r\n\r\nEngagement Analytics: Integrated dashboard features that provide insights into member growth, retention rates, and demographic distributions.\r\n\r\nCommunication Hub: Built-in triggers for real-time notifications via WhatsApp and Email, ensuring members stay informed about their status and upcoming events",
+      "images": [
+        "1778481167751-screenshot-2026-05-11-115425.png",
+        "1778481167755-screenshot-2026-05-11-115418.png",
+        "1778481167760-screenshot-2026-05-11-115404.png",
+        "1778481167761-screenshot-2026-05-11-115352.png",
+        "1778481167765-screenshot-2026-05-11-115325.png"
+      ]
+    },
+    {
+      "id": "1778481110065",
+      "title": "Dynamic Brokerage & Commission Management System",
+      "description": "Engineered a high-performance management platform designed specifically for brokers to track transactions, client portfolios, and automated commission structures. This system eliminates manual calculation errors and provides a real-time overview of brokerage health.\r\n\r\nKey Features:\r\n\r\nCommission Engine: Automated logic to calculate complex brokerage splits, referral fees, and net payouts across varying transaction types.\r\n\r\nMember & Client Portfolios: A secure management module to track member history, transaction logs, and personalized broker-client relationships.\r\n\r\nFinancial Reporting: Instant generation of brokerage statements and transaction summaries, providing transparency for both brokers and their members.\r\n\r\nData Integrity: Implemented a robust backend to handle high-concurrency data entries, ensuring financial records remain consistent and audit-ready",
+      "images": [
+        "1778481110040-screenshot-2026-05-11-111050.png",
+        "1778481110043-screenshot-2026-05-11-111038.png",
+        "1778481110049-screenshot-2026-05-11-111029.png",
+        "1778481110051-screenshot-2026-05-11-111017.png",
+        "1778481110053-screenshot-2026-05-11-111002.png",
+        "1778481110055-screenshot-2026-05-11-110941.png",
+        "1778481110056-screenshot-2026-05-11-110934.png",
+        "1778481110058-screenshot-2026-05-11-110924.png",
+        "1778481110060-screenshot-2026-05-11-110903.png"
+      ]
+    },
+    {
+      "id": "1778481044787",
+      "title": "Gavyansh Wellness — Enterprise Accounting & Inventory ERP",
+      "description": "Developed a comprehensive, multi-branch Accounting ERP tailored for wellness enterprises. The system manages the entire business lifecycle, from stock management and inventory tracking to detailed purchase and sales entries.\r\n\r\nKey Features:\r\n\r\nFinancial Intelligence: Real-time generation of Profit & Loss statements, Balance Sheets, and automated Day Books.\r\n\r\nInvoicing System: Dynamic PDF invoice generation with support for multiple branches, custom logos, and instant 'Share to WhatsApp' functionality.\r\n\r\nBranch Management: A centralized dashboard allowing the owner to switch between branches with independent branding and stock tracking.\r\n\r\nAutomation: Automated stock adjustments and tax calculations to ensure 100% financial accuracy.",
+      "images": [
+        "1778481044741-screenshot-2026-05-11-111916.png",
+        "1778481044744-screenshot-2026-05-11-111909.png",
+        "1778481044749-screenshot-2026-05-11-111903.png",
+        "1778481044752-screenshot-2026-05-11-111837.png",
+        "1778481044754-screenshot-2026-05-11-111834.png",
+        "1778481044756-screenshot-2026-05-11-111820.png",
+        "1778481044757-screenshot-2026-05-11-111538.png",
+        "1778481044758-screenshot-2026-05-11-111529.png",
+        "1778481044760-screenshot-2026-05-11-111516.png",
+        "1778481044762-screenshot-2026-05-11-111504.png",
+        "1778481044763-screenshot-2026-05-11-111455.png",
+        "1778481044778-screenshot-2026-05-11-111439.png",
+        "1778481044781-screenshot-2026-05-11-111429.png",
+        "1778481044783-screenshot-2026-05-11-111313.png"
+      ]
+    }
+  ]
+}
