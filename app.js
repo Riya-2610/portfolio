@@ -13,6 +13,7 @@ const DATA_PATH = path.join(__dirname, 'data.json');
 const UPLOAD_DIR = path.join(__dirname, 'public', 'uploads');
 
 const defaultData = {
+  title: "Riya - Portfolio", // Add this line
   about: "I'm a creative developer who builds polished web experiences.",
   skills: ['Node.js', 'Express', 'EJS', 'JavaScript', 'UI Design'],
   experience: [],
@@ -188,4 +189,6 @@ app.post('/manage/projects/:id/images/:imageName/delete', requireAuth, (req, res
     res.redirect('/manage#projects-panel');
 });
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
+});
