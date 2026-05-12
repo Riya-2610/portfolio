@@ -7,7 +7,7 @@ const path = require('path');
 const FileStore = require('session-file-store')(session); 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const ADMIN_PASSWORD = 'rv2612';
 const DATA_PATH = path.join(__dirname, 'data.json');
 const UPLOAD_DIR = path.join(__dirname, 'public', 'uploads');
